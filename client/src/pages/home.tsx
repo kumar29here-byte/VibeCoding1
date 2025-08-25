@@ -4,6 +4,7 @@ import FloatingEmojis from "@/components/floating-emojis";
 import QRCodeGenerator from "@/components/qr-code-generator";
 import MoodSubmissionForm from "@/components/mood-submission-form";
 import { Button } from "@/components/ui/button";
+import vendastaLogo from "@assets/vendasta-logo-png_seeklogo-411728_1756147738495.png";
 
 export default function Home() {
   const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
@@ -62,6 +63,24 @@ export default function Home() {
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Welcome Header */}
           <div className="text-center mb-12 animate-fade-in">
+            {/* Vendasta Logo */}
+            <div className="mb-6">
+              <img 
+                src={vendastaLogo} 
+                alt="Vendasta" 
+                className="h-12 mx-auto mb-4"
+                data-testid="vendasta-logo"
+              />
+            </div>
+            
+            {/* Event Name */}
+            <div className="mb-6">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-2">
+                Ideas on Tap
+              </h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-purple-600 to-teal-500 mx-auto rounded-full"></div>
+            </div>
+            
             <div className="text-8xl mb-4 animate-bounce-gentle">🎭</div>
             <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-600 via-pink-500 to-teal-500 bg-clip-text text-transparent mb-4">
               Share Your Vibe!

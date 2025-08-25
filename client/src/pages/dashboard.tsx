@@ -8,6 +8,7 @@ import LiveMoodFeed from "@/components/live-mood-feed";
 import MoodHeatmap from "@/components/mood-heatmap";
 import { Button } from "@/components/ui/button";
 import { MoodSubmission } from "@shared/schema";
+import vendastaLogo from "@assets/vendasta-logo-png_seeklogo-411728_1756147738495.png";
 
 export default function Dashboard() {
   const [lastUpdate, setLastUpdate] = useState(new Date());
@@ -117,6 +118,24 @@ export default function Dashboard() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Dashboard Header */}
           <div className="text-center mb-12 animate-fade-in">
+            {/* Vendasta Logo */}
+            <div className="mb-6">
+              <img 
+                src={vendastaLogo} 
+                alt="Vendasta" 
+                className="h-10 mx-auto mb-4"
+                data-testid="vendasta-logo-dashboard"
+              />
+            </div>
+            
+            {/* Event Name */}
+            <div className="mb-6">
+              <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-2">
+                Ideas on Tap
+              </h2>
+              <div className="w-20 h-1 bg-gradient-to-r from-purple-600 to-teal-500 mx-auto rounded-full"></div>
+            </div>
+            
             <div className="text-8xl mb-4 animate-bounce-gentle">📊</div>
             <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-purple-600 via-pink-500 to-teal-500 bg-clip-text text-transparent mb-4">
               Live Mood Dashboard
