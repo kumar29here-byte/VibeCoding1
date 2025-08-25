@@ -4,7 +4,7 @@ import FloatingEmojis from "@/components/floating-emojis";
 import QRCodeGenerator from "@/components/qr-code-generator";
 import MoodSubmissionForm from "@/components/mood-submission-form";
 import { Button } from "@/components/ui/button";
-import vendastaLogo from "@assets/vendasta-logo-png_seeklogo-411728_1756147738495.png";
+import vendastaLogo from "@assets/5f0ae6b5d0e3720001a31e00-198x149-1x_1756147904599.webp";
 
 export default function Home() {
   const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
@@ -36,8 +36,13 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-3">
-              <div className="text-2xl">🎭</div>
-              <h1 className="text-xl font-bold text-gray-900">Mood Dashboard</h1>
+              <img 
+                src={vendastaLogo} 
+                alt="Vendasta" 
+                className="h-8 w-8"
+                data-testid="nav-vendasta-logo"
+              />
+              <h1 className="text-xl font-bold text-gray-900">VENDASTA</h1>
             </div>
             
             <div className="flex items-center space-x-4">
@@ -63,16 +68,6 @@ export default function Home() {
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Welcome Header */}
           <div className="text-center mb-12 animate-fade-in">
-            {/* Vendasta Logo */}
-            <div className="mb-6">
-              <img 
-                src={vendastaLogo} 
-                alt="Vendasta" 
-                className="h-12 mx-auto mb-4"
-                data-testid="vendasta-logo"
-              />
-            </div>
-            
             {/* Event Name */}
             <div className="mb-6">
               <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-2">
