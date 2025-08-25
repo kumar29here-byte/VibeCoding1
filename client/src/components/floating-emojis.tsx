@@ -1,10 +1,13 @@
 export default function FloatingEmojis() {
   const emojis = [
-    { emoji: "😊", top: "10%", left: "10%", delay: "0s", size: "text-4xl" },
-    { emoji: "🎉", top: "20%", right: "15%", delay: "1s", size: "text-3xl" },
-    { emoji: "💫", top: "60%", left: "5%", delay: "2s", size: "text-5xl" },
-    { emoji: "✨", bottom: "20%", right: "10%", delay: "0.5s", size: "text-4xl" },
-    { emoji: "🌟", top: "80%", left: "80%", delay: "1.5s", size: "text-3xl" },
+    { emoji: "😊", top: "15%", left: "8%", delay: "0s", size: "text-4xl", rotate: "animate-wiggle" },
+    { emoji: "🎉", top: "25%", right: "12%", delay: "1s", size: "text-3xl", rotate: "" },
+    { emoji: "💫", top: "65%", left: "3%", delay: "2s", size: "text-5xl", rotate: "animate-wiggle" },
+    { emoji: "✨", bottom: "25%", right: "8%", delay: "0.5s", size: "text-4xl", rotate: "" },
+    { emoji: "🌟", top: "85%", left: "85%", delay: "1.5s", size: "text-3xl", rotate: "animate-wiggle" },
+    { emoji: "🚀", top: "45%", right: "5%", delay: "2.5s", size: "text-3xl", rotate: "" },
+    { emoji: "🎭", top: "5%", left: "50%", delay: "3s", size: "text-4xl", rotate: "animate-wiggle" },
+    { emoji: "💝", bottom: "60%", left: "75%", delay: "1.8s", size: "text-3xl", rotate: "" },
   ];
 
   return (
@@ -12,7 +15,7 @@ export default function FloatingEmojis() {
       {emojis.map((item, index) => (
         <div
           key={index}
-          className={`floating-emoji ${item.size}`}
+          className={`floating-emoji ${item.size} ${item.rotate}`}
           style={{
             top: item.top,
             left: item.left,

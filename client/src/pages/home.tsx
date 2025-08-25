@@ -57,14 +57,33 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Main Container */}
+      {/* Hero Section */}
       <div className="pt-20 pb-8">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* QR Code Section */}
-          <QRCodeGenerator url={currentUrl} />
+          {/* Welcome Header */}
+          <div className="text-center mb-12 animate-fade-in">
+            <div className="text-8xl mb-4 animate-bounce-gentle">🎭</div>
+            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-600 via-pink-500 to-teal-500 bg-clip-text text-transparent mb-4">
+              Share Your Vibe!
+            </h1>
+            <p className="text-lg text-gray-600 max-w-md mx-auto">
+              Help us capture the energy of this moment. Your mood matters! ✨
+            </p>
+          </div>
 
           {/* Mood Submission Form */}
           <MoodSubmissionForm />
+        </div>
+      </div>
+
+      {/* QR Code Section - Moved Below */}
+      <div className="bg-gradient-to-r from-purple-100 via-pink-50 to-teal-100 py-16">
+        <div className="max-w-lg mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">📱 Share with Others</h2>
+            <p className="text-gray-600">Spread the word! Let others join the mood tracking</p>
+          </div>
+          <QRCodeGenerator url={currentUrl} />
         </div>
       </div>
 

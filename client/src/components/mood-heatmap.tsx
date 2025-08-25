@@ -46,9 +46,10 @@ export default function MoodHeatmap({ submissions }: MoodHeatmapProps) {
   const heatmapData = generateHeatmapData();
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-6">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-        🔥 Mood Intensity
+    <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl border border-white/50 p-6 hover:shadow-3xl transition-all duration-300">
+      <h3 className="text-xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-6 flex items-center justify-center">
+        <span className="text-2xl mr-2">🔥</span>
+        Mood Intensity
       </h3>
       <div className="grid grid-cols-8 gap-1 h-64" data-testid="mood-heatmap">
         {heatmapData.map((intensity, index) => (

@@ -116,18 +116,27 @@ export default function Dashboard() {
       <div className="pt-20 pb-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Dashboard Header */}
-          <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold text-gray-900 mb-2">📊 Live Mood Dashboard</h1>
-            <p className="text-gray-600">Real-time participant feedback</p>
-            <div className="mt-4 inline-flex items-center space-x-4 bg-white rounded-lg px-6 py-3 shadow-lg">
+          <div className="text-center mb-12 animate-fade-in">
+            <div className="text-8xl mb-4 animate-bounce-gentle">📊</div>
+            <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-purple-600 via-pink-500 to-teal-500 bg-clip-text text-transparent mb-4">
+              Live Mood Dashboard
+            </h1>
+            <p className="text-xl text-gray-600 mb-6">Real-time participant feedback ✨</p>
+            <div className="inline-flex items-center space-x-6 bg-white/80 backdrop-blur-sm rounded-2xl px-8 py-4 shadow-2xl border border-white/50">
+              <div className="flex items-center space-x-3">
+                <div className="relative">
+                  <div className="w-4 h-4 bg-green-400 rounded-full animate-pulse"></div>
+                  <div className="absolute inset-0 w-4 h-4 bg-green-400 rounded-full animate-ping opacity-75"></div>
+                </div>
+                <span className="text-sm font-semibold text-gray-700">Live Updates</span>
+              </div>
               <div className="flex items-center space-x-2">
-                <div className="w-3 h-3 bg-green-400 rounded-full animate-bounce-gentle"></div>
-                <span className="text-sm font-medium text-gray-700">Live Updates</span>
+                <span className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent" data-testid="total-submissions">
+                  {moodStats.total}
+                </span>
+                <span className="text-sm text-gray-600 font-medium">submissions</span>
               </div>
-              <div className="text-sm text-gray-500" data-testid="total-submissions">
-                {moodStats.total} submissions
-              </div>
-              <div className="text-sm text-gray-500" data-testid="last-update">
+              <div className="text-sm text-gray-500 font-medium" data-testid="last-update">
                 Updated {secondsAgo}s ago
               </div>
             </div>
@@ -155,26 +164,31 @@ export default function Dashboard() {
           <TrendChart submissions={submissions} />
 
           {/* Summary Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mt-8">
-            <div className="bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-xl p-4 text-white text-center">
-              <div className="text-3xl font-bold" data-testid="count-super-happy">{moodStats.superHappy}</div>
-              <div className="text-sm opacity-90">🤩 Super Happy</div>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-6 mt-12">
+            <div className="bg-gradient-to-br from-yellow-400 via-orange-400 to-pink-400 rounded-2xl p-6 text-white text-center transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl">
+              <div className="text-5xl mb-2">🤩</div>
+              <div className="text-4xl font-bold mb-1" data-testid="count-super-happy">{moodStats.superHappy}</div>
+              <div className="text-sm font-semibold opacity-90">Super Happy</div>
             </div>
-            <div className="bg-gradient-to-r from-green-400 to-green-500 rounded-xl p-4 text-white text-center">
-              <div className="text-3xl font-bold" data-testid="count-happy">{moodStats.happy}</div>
-              <div className="text-sm opacity-90">😊 Happy</div>
+            <div className="bg-gradient-to-br from-green-400 via-emerald-400 to-teal-400 rounded-2xl p-6 text-white text-center transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl">
+              <div className="text-5xl mb-2">😊</div>
+              <div className="text-4xl font-bold mb-1" data-testid="count-happy">{moodStats.happy}</div>
+              <div className="text-sm font-semibold opacity-90">Happy</div>
             </div>
-            <div className="bg-gradient-to-r from-gray-400 to-gray-500 rounded-xl p-4 text-white text-center">
-              <div className="text-3xl font-bold" data-testid="count-neutral">{moodStats.neutral}</div>
-              <div className="text-sm opacity-90">😐 Neutral</div>
+            <div className="bg-gradient-to-br from-slate-400 via-gray-400 to-zinc-400 rounded-2xl p-6 text-white text-center transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl">
+              <div className="text-5xl mb-2">😐</div>
+              <div className="text-4xl font-bold mb-1" data-testid="count-neutral">{moodStats.neutral}</div>
+              <div className="text-sm font-semibold opacity-90">Neutral</div>
             </div>
-            <div className="bg-gradient-to-r from-pink-400 to-pink-500 rounded-xl p-4 text-white text-center">
-              <div className="text-3xl font-bold" data-testid="count-anxious">{moodStats.anxious}</div>
-              <div class="text-sm opacity-90">😰 Anxious</div>
+            <div className="bg-gradient-to-br from-pink-400 via-rose-400 to-red-400 rounded-2xl p-6 text-white text-center transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl">
+              <div className="text-5xl mb-2">😰</div>
+              <div className="text-4xl font-bold mb-1" data-testid="count-anxious">{moodStats.anxious}</div>
+              <div className="text-sm font-semibold opacity-90">Anxious</div>
             </div>
-            <div className="bg-gradient-to-r from-blue-400 to-blue-500 rounded-xl p-4 text-white text-center">
-              <div className="text-3xl font-bold" data-testid="count-sad">{moodStats.sad}</div>
-              <div className="text-sm opacity-90">😢 Sad</div>
+            <div className="bg-gradient-to-br from-blue-400 via-indigo-400 to-purple-400 rounded-2xl p-6 text-white text-center transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl">
+              <div className="text-5xl mb-2">😢</div>
+              <div className="text-4xl font-bold mb-1" data-testid="count-sad">{moodStats.sad}</div>
+              <div className="text-sm font-semibold opacity-90">Sad</div>
             </div>
           </div>
         </div>

@@ -12,36 +12,41 @@ const moodOptions = [
     id: "super-happy", 
     emoji: "🤩", 
     label: "Super Happy", 
-    gradient: "bg-gradient-to-b from-yellow-100 to-yellow-200",
-    border: "hover:border-yellow-400"
+    gradient: "bg-gradient-to-br from-yellow-300 via-orange-300 to-pink-300",
+    border: "hover:border-yellow-400 hover:shadow-lg hover:shadow-yellow-200",
+    glow: "hover:ring-4 hover:ring-yellow-200"
   },
   { 
     id: "happy", 
     emoji: "😊", 
     label: "Happy", 
-    gradient: "bg-gradient-to-b from-green-100 to-green-200",
-    border: "hover:border-green-400"
+    gradient: "bg-gradient-to-br from-green-300 via-emerald-300 to-teal-300",
+    border: "hover:border-green-400 hover:shadow-lg hover:shadow-green-200",
+    glow: "hover:ring-4 hover:ring-green-200"
   },
   { 
     id: "neutral", 
     emoji: "😐", 
     label: "Neutral", 
-    gradient: "bg-gradient-to-b from-gray-100 to-gray-200",
-    border: "hover:border-gray-400"
+    gradient: "bg-gradient-to-br from-slate-200 via-gray-200 to-zinc-200",
+    border: "hover:border-gray-400 hover:shadow-lg hover:shadow-gray-200",
+    glow: "hover:ring-4 hover:ring-gray-200"
   },
   { 
     id: "anxious", 
     emoji: "😰", 
     label: "Anxious", 
-    gradient: "bg-gradient-to-b from-pink-100 to-pink-200",
-    border: "hover:border-pink-400"
+    gradient: "bg-gradient-to-br from-pink-300 via-rose-300 to-red-300",
+    border: "hover:border-pink-400 hover:shadow-lg hover:shadow-pink-200",
+    glow: "hover:ring-4 hover:ring-pink-200"
   },
   { 
     id: "sad", 
     emoji: "😢", 
     label: "Sad", 
-    gradient: "bg-gradient-to-b from-blue-100 to-blue-200",
-    border: "hover:border-blue-400"
+    gradient: "bg-gradient-to-br from-blue-300 via-indigo-300 to-purple-300",
+    border: "hover:border-blue-400 hover:shadow-lg hover:shadow-blue-200",
+    glow: "hover:ring-4 hover:ring-blue-200"
   },
 ];
 
@@ -120,10 +125,20 @@ export default function MoodSubmissionForm() {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-8 animate-fade-in">
-      <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-gray-900 mb-2">How are you feeling?</h2>
-        <p className="text-gray-600">Share your mood to help us understand the event vibe</p>
+    <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl border border-white/50 p-8 animate-fade-in relative overflow-hidden">
+      {/* Decorative background elements */}
+      <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-200 to-pink-200 rounded-full opacity-20 -translate-y-16 translate-x-16"></div>
+      <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-br from-teal-200 to-blue-200 rounded-full opacity-20 translate-y-12 -translate-x-12"></div>
+      <div className="text-center mb-8 relative z-10">
+        <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-700 to-pink-600 bg-clip-text text-transparent mb-3">How are you feeling?</h2>
+        <p className="text-gray-600 text-lg">Share your mood to help us understand the event vibe</p>
+        <div className="flex justify-center mt-4">
+          <div className="flex space-x-1">
+            <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{animationDelay: '0s'}}></div>
+            <div className="w-2 h-2 bg-pink-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+            <div className="w-2 h-2 bg-teal-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+          </div>
+        </div>
       </div>
 
       {/* Mood Selection */}
@@ -131,16 +146,16 @@ export default function MoodSubmissionForm() {
         {moodOptions.map((mood) => (
           <div
             key={mood.id}
-            className={`mood-option ${mood.gradient} rounded-xl p-4 text-center cursor-pointer border-2 transition-all ${
+            className={`mood-option ${mood.gradient} rounded-2xl p-6 text-center cursor-pointer border-2 transition-all duration-300 transform ${
               selectedMood === mood.id 
-                ? "ring-4 ring-purple-400 border-purple-400" 
-                : `border-transparent ${mood.border}`
+                ? "ring-4 ring-purple-400 border-purple-400 scale-105 shadow-xl" 
+                : `border-transparent ${mood.border} ${mood.glow} hover:scale-110`
             }`}
             onClick={() => setSelectedMood(mood.id)}
             data-testid={`mood-option-${mood.id}`}
           >
-            <div className="text-5xl mb-2">{mood.emoji}</div>
-            <div className="text-sm font-medium text-gray-700">{mood.label}</div>
+            <div className="text-6xl mb-3 transform transition-transform duration-300 group-hover:scale-110">{mood.emoji}</div>
+            <div className="text-sm font-semibold text-gray-800">{mood.label}</div>
           </div>
         ))}
       </div>
@@ -197,10 +212,21 @@ export default function MoodSubmissionForm() {
       <Button
         onClick={handleSubmit}
         disabled={submitMoodMutation.isPending}
-        className="w-full bg-gradient-to-r from-purple-600 to-teal-600 hover:from-purple-700 hover:to-teal-700 text-white font-semibold py-4 px-6 rounded-lg transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full bg-gradient-to-r from-purple-500 via-pink-500 to-teal-500 hover:from-purple-600 hover:via-pink-600 hover:to-teal-600 text-white font-bold py-6 px-8 rounded-2xl transition-all transform hover:scale-105 hover:shadow-2xl hover:shadow-purple-200 disabled:opacity-50 disabled:cursor-not-allowed text-lg"
         data-testid="button-submit-mood"
       >
-        {submitMoodMutation.isPending ? "Submitting..." : "✨ Share My Mood"}
+        {submitMoodMutation.isPending ? (
+          <div className="flex items-center justify-center space-x-2">
+            <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+            <span>Submitting...</span>
+          </div>
+        ) : (
+          <div className="flex items-center justify-center space-x-2">
+            <span>✨</span>
+            <span>Share My Mood</span>
+            <span>🚀</span>
+          </div>
+        )}
       </Button>
 
       {/* Success Message */}
