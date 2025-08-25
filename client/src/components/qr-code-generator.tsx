@@ -1,10 +1,5 @@
 import { useEffect, useRef } from "react";
-
-declare global {
-  interface Window {
-    QRCode: any;
-  }
-}
+import QRCode from "qrcode";
 
 interface QRCodeGeneratorProps {
   url: string;
@@ -14,27 +9,18 @@ export default function QRCodeGenerator({ url }: QRCodeGeneratorProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    // Load QR Code library
-    const script = document.createElement('script');
-    script.src = 'https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js';
-    script.onload = () => {
-      if (canvasRef.current && window.QRCode) {
-        window.QRCode.toCanvas(canvasRef.current, url, {
-          width: 150,
-          height: 150,
-          margin: 2,
-          color: {
-            dark: '#1E293B',
-            light: '#FFFFFF'
-          }
-        });
-      }
-    };
-    document.head.appendChild(script);
-
-    return () => {
-      document.head.removeChild(script);
-    };
+    if (canvasRef.current && url) {
+      QRCode.toCanvas(canvasRef.current, url, {
+        width: 200,
+        margin: 2,
+        color: {
+          dark: '#1E293B',
+          light: '#FFFFFF'
+        }
+      }).catch((err) => {
+        console.error('Error generating QR code:', err);
+      });
+    }
   }, [url]);
 
   return (
