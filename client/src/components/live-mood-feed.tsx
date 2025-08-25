@@ -32,15 +32,21 @@ export default function LiveMoodFeed({ submissions }: LiveMoodFeedProps) {
           recentSubmissions.map((submission, index) => (
             <div
               key={submission.id}
-              className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg animate-slide-up"
+              className="flex items-center space-x-3 p-3 bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl border border-gray-200 animate-slide-up hover:shadow-lg transition-all duration-300"
               style={{ animationDelay: `${index * 0.1}s` }}
               data-testid={`mood-feed-item-${index}`}
             >
-              <div className="text-2xl">{moodEmojis[submission.mood] || '😐'}</div>
+              <div className="text-3xl">{moodEmojis[submission.mood] || '😐'}</div>
               <div className="flex-1">
-                <div className="text-sm text-gray-500">
+                <div className="text-sm font-semibold text-gray-700">
+                  {submission.name || 'Anonymous'}
+                </div>
+                <div className="text-xs text-gray-500">
                   {formatDistanceToNow(new Date(submission.timestamp), { addSuffix: true })}
                 </div>
+              </div>
+              <div className="text-xs text-gray-400 font-medium capitalize">
+                {submission.mood.replace('-', ' ')}
               </div>
             </div>
           ))
