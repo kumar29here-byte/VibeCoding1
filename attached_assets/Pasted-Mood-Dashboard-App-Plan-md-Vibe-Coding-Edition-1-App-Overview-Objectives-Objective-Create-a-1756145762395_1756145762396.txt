@@ -1,0 +1,163 @@
+Mood Dashboard App – Plan.md (Vibe Coding Edition)
+1. App Overview & Objectives
+
+Objective:
+Create a lightweight, user-friendly, always-accessible web app to capture participant mood feedback in real-time and display it in a visually engaging dashboard. Designed for live events (<100 participants), with playful and colorful UI while keeping a minimalist feel.
+
+Key Goals:
+
+Easy QR-code-based participant submissions.
+
+Optional name/email collection for limited tracking.
+
+Real-time dashboard updates with pie chart, mood feed, heatmap/grid, and trend visualization.
+
+Post-event accessibility and CSV export.
+
+2. Target Audience
+
+Event participants (onsite or online).
+
+Organizers seeking real-time mood insights and post-event analytics.
+
+Small-scale events, <100 participants.
+
+3. Core Functional Modules
+Frontend (Participant Input & Dashboard Display)
+
+Mood Submission Form:
+
+Mood selection (emoji with tooltip: happy, super happy, neutral, anxious, sad, etc.)
+
+Name/email optional (single submission if provided)
+
+Privacy consent display
+
+Confirmation animation/feedback
+
+Dashboard Visualization:
+
+Pie Chart: Mood distribution (%)
+
+Live-Updating Emoji Feed: Displays submissions anonymously
+
+Mood Grid/Heatmap: Color-coded for energy/impact
+
+Trend Over Time: Line chart for mood changes during the event
+
+Totals/Counts per Mood
+
+Floating emojis for playful, dynamic effect
+
+UI/UX Principles:
+
+Clean, minimalist layout with playful color accents
+
+Responsive design for mobile & desktop
+
+Visual clarity prioritized over branding (branding can be added later)
+
+Backend (Data Handling & Real-Time Updates)
+
+Submission Handling:
+
+Accept mood input + optional name/email + timestamp
+
+Enforce single submission for named/email participants, multiple for anonymous
+
+Database / Storage:
+
+Lightweight, self-contained solution (e.g., Firebase/Firestore, JSON, or SQLite)
+
+Realtime updates for dashboard display
+
+Export Feature:
+
+CSV export of all submissions (mood, timestamp, name/email if provided)
+
+Security & Privacy:
+
+Optional participant data stored securely
+
+Live dashboard remains fully anonymous
+
+HTTPS hosting for secure access
+
+Real-Time Dashboard Functionality
+
+Updates as participants submit responses
+
+Displays visual summaries (pie chart, heatmap/grid, live feed)
+
+Tracks mood trends over time
+
+Maintains accessibility after event for review
+
+4. Conceptual Data Model
+Field	Type	Notes
+id	Unique ID	Auto-generated submission ID
+mood	String	Emoji/mood type (required)
+name	String	Optional
+email	String	Optional
+timestamp	DateTime	Submission time
+5. High-Level Technical Stack Recommendations
+
+Frontend:
+
+React, Vue, or Vanilla JS for live updates
+
+Charting & visualization: Chart.js, ApexCharts, or D3.js
+
+Backend / Database:
+
+Firebase / Firestore for easy real-time updates and cloud hosting
+
+Optional: Node.js/Express server for handling submissions if self-hosted
+
+Real-Time Communication:
+
+WebSocket or Firebase Realtime Database for live dashboard updates
+
+Hosting:
+
+Cloud-hosted web app for anytime access
+
+HTTPS for secure connection
+
+6. Security & Privacy Considerations
+
+Display privacy consent before submission
+
+Keep live dashboard fully anonymous
+
+Optional name/email stored securely, not shown on dashboard
+
+Minimal personal data collected; HTTPS hosting
+
+7. Development Structure (Vibe Coding Style)
+
+Frontend: Form, dashboard, visualizations
+
+Backend: Submission handling, data storage, export, real-time feed
+
+Iterative live coding—frontend and backend work together simultaneously
+
+Continuous feedback loop: submissions immediately reflected in dashboard
+
+8. Potential Challenges & Solutions
+Challenge	Solution
+Real-time updates	Use Firebase or WebSockets for push updates
+Anonymous vs tracked submissions	Separate handling logic in backend
+Clean yet playful UI balance	Minimalist design + selective playful elements like floating emojis
+Post-event dashboard persistence	Persist data in cloud DB or server storage
+9. Future Expansion Possibilities
+
+Multi-event support with configurable dashboards
+
+Mood trends across multiple events
+
+Event branding and theme customization
+
+Advanced analytics (average mood, mood peaks)
+
+Optional email follow-ups for participants
